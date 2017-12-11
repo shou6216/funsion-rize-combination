@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('ultra', { title: 'ウルトラマン' });
+  res.render('detail', { title: '怪獣' });
 });
 
 module.exports = router;

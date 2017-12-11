@@ -6,7 +6,7 @@ router.get('/', redirectTop);
 router.get('/index', redirectTop);
 
 function redirectTop(req, res, next) {
-  res.redirect(301, "/ultra");
+  res.redirect(301, "/list");
 }
 
 module.exports = router;
