@@ -2,22 +2,20 @@ extends layout
 block title
   title= title
 block content
-  h1= title
-  p Welcome to #{title}
-    div.btn-group(role="group", aria-label="Basic example")
-      button.btn(type="button") Left
-      button.btn.btn-secondary(type="button") Middle
-      button.btn.btn-info(type="button") Right
-  
-  div.container-fluid
-    div.row
-      div.col-sm One of three columns
-      div.col-sm One of three columns
-      div.col-sm One of three columns
+  div.jumbotron
+    h1 #{title}
+    p ここではカプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
 
   div.container-fluid
-    div.row
-      div.col-xs .col-xs
-      div.col-xs .col-xs
-      div.col-xs .col-xs
+    div.row.flex-items-xs-center
+      div.col-md-6.col-xs-12
+        ul.nav.nav-pills.nav-justified
+          li.nav-item: a.nav-link.active(data-toggle="tab" href="#home" role="tab") タブ1
+          li.nav-item: a.nav-link(data-toggle="tab" href="#home" role="tab") タブ2
+
+        div.tab-content
+          div.tab-pane.active(role="tabpanel"): img.img-fluid(src="http://jsrun.it/assets/8/I/s/O/8IsOW.jpg", alt="")
+        div.tab-content
+          div.tab-pane(role="tabpanel"): img.img-fluid(src="http://jsrun.it/assets/6/6/k/e/66keT.jpg", alt="")
+
 
