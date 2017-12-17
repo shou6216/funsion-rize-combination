@@ -17,37 +17,29 @@ block content
             table.table
               thead
                 tr
-                  th="#"
-                  th="First Name"
-                  th="Last Name"
-                  th="Username"
+                  th="ID"
+                  th="フルネーム"
+                  th="略名"
+                  th="第X段"
               tbody
-                tr
-                  th(scope="row"): 1
-                  td: ウルトラマン
-                  td: オーブ
-                  td: ジード
-                tr
-                  th(scope="row"): 2
-                  td: Jacob
-                  td: Thornton
-                  td: @fat
+                for ultra in ultraList
+                  tr
+                    th(scope="row")=ultra.id
+                    td=ultra.fullName
+                    td=ultra.shortName
+                    td=ultra.stage
           div#monster.tab-pane(role="tabpanel")
             table.table
               thead
                 tr
-                  th="#"
-                  th="First Name"
-                  th="Last Name"
-                  th="Username"
+                  th="ID"
+                  th="フルネーム"
+                  th="略名"
+                  th="第X段"
               tbody
-                tr
-                  th(scope="row"): 1
-                  td: ゴモラ
-                  td: バルタン星人
-                  td: ゼットン
-                tr
-                  th(scope="row"): 2
-                  td: Jacob
-                  td: Thornton
-                  td: @fat
+                for monster in monsterList
+                  tr
+                    th(scope="row")=monster.id
+                    td=monster.fullName
+                    td=monster.shortName
+                    td=monster.stage
