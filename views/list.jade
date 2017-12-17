@@ -4,18 +4,50 @@ block title
 block content
   div.jumbotron
     h1 #{title}
-    p ここではカプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
+    p カプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
 
   div.container-fluid
     div.row.flex-items-xs-center
       div.col-md-6.col-xs-12
-        ul.nav.nav-pills.nav-justified
-          li.nav-item: a.nav-link.active(data-toggle="tab" href="#home" role="tab") タブ1
-          li.nav-item: a.nav-link(data-toggle="tab" href="#home" role="tab") タブ2
-
+        ul.nav.nav-pills
+          li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
+          li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
         div.tab-content
-          div.tab-pane.active(role="tabpanel"): img.img-fluid(src="http://jsrun.it/assets/8/I/s/O/8IsOW.jpg", alt="")
-        div.tab-content
-          div.tab-pane(role="tabpanel"): img.img-fluid(src="http://jsrun.it/assets/6/6/k/e/66keT.jpg", alt="")
-
-
+          div#ultra.tab-pane.active(role="tabpanel")
+            table.table
+              thead
+                tr
+                  th="#"
+                  th="First Name"
+                  th="Last Name"
+                  th="Username"
+              tbody
+                tr
+                  th(scope="row"): 1
+                  td: ウルトラマン
+                  td: オーブ
+                  td: ジード
+                tr
+                  th(scope="row"): 2
+                  td: Jacob
+                  td: Thornton
+                  td: @fat
+          div#monster.tab-pane(role="tabpanel")
+            table.table
+              thead
+                tr
+                  th="#"
+                  th="First Name"
+                  th="Last Name"
+                  th="Username"
+              tbody
+                tr
+                  th(scope="row"): 1
+                  td: ゴモラ
+                  td: バルタン星人
+                  td: ゼットン
+                tr
+                  th(scope="row"): 2
+                  td: Jacob
+                  td: Thornton
+                  td: @fat
