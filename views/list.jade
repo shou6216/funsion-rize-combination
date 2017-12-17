@@ -1,3 +1,5 @@
+include ./mixin/capsuleList
+
 extends layout
 block title
   title= title
@@ -14,32 +16,6 @@ block content
           li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
         div.tab-content
           div#ultra.tab-pane.active(role="tabpanel")
-            table.table
-              thead
-                tr
-                  th="ID"
-                  th="フルネーム"
-                  th="略名"
-                  th="第X段"
-              tbody
-                for ultra in ultraList
-                  tr
-                    th(scope="row")=ultra.id
-                    td=ultra.fullName
-                    td=ultra.shortName
-                    td=ultra.stage
+            +list(ultraList)
           div#monster.tab-pane(role="tabpanel")
-            table.table
-              thead
-                tr
-                  th="ID"
-                  th="フルネーム"
-                  th="略名"
-                  th="第X段"
-              tbody
-                for monster in monsterList
-                  tr
-                    th(scope="row")=monster.id
-                    td=monster.fullName
-                    td=monster.shortName
-                    td=monster.stage
+            +list(monsterList)

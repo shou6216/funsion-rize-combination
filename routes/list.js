@@ -27,25 +27,24 @@ var monsterList = [
     id : "M100",
     fullName: "ゴモラ",
     shortName: "ゴモラ",
-    stage: 1
+    stage: 10
   },
   {
     id : "M101",
     fullName: "ゼットン",
     shortName: "ゼットン",
-    stage: 2
+    stage: 20
   },
   {
     id : "M102",
     fullName: "バードン",
     shortName: "バードン",
-    stage: 3
+    stage: 30
   }
 ]
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(ultraList);
   res.render('list', { 
     title: 'カプセル一覧',
     ultraList: ultraList,
