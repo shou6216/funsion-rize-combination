@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var sqlite3 = require('sqlite3');
+var db = new sqlite3.Database('fusion-rize.db');
+
 var ultraList = [
   {
     id : "U100",
@@ -45,10 +48,16 @@ var monsterList = [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('list', { 
-    title: 'カプセル一覧',
-    ultraList: ultraList,
-    monsterList: monsterList
+  db.serialize(() => {
+    db.all("select * from ultraCapsule", (err, rows) => {
+      if (!err) {
+        res.render('list', { 
+          title: 'カプセル一覧',
+          ultraList: rows,
+          monsterList: monsterList
+        });      
+      }
+    });
   });
 });
 

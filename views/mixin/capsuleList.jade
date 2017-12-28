@@ -5,11 +5,9 @@ mixin list(capsuleList)
         th="ID"
         th="フルネーム"
         th="略名"
-        th="第X段"
     tbody
       for capsule in capsuleList
         tr
           th(scope="row")=capsule.id
           td=capsule.fullName
-          td=capsule.shortName
-          td=capsule.stage
+          td=capsule.nickName
