@@ -49,7 +49,7 @@ var monsterList = [
 /* GET home page. */
 router.get('/', function(req, res, next) {
   db.serialize(() => {
-    db.all("select * from ultraCapsule", (err, rows) => {
+    db.all("select * from capsule", (err, rows) => {
       if (!err) {
         res.render('list', { 
           title: 'カプセル一覧',
