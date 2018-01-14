@@ -8,11 +8,9 @@ var knex = require('knex')({
   useNullAsDefault: true
 });
 var Bookshelf = require('bookshelf')(knex);
+var ViewFusion = require('../models/fusion');
 var DBMapping = Bookshelf.Model.extend({
   tableName: 'mapping',
-  youCapsule: function() {
-    return this.belongsTo(DBCapsule, 'youCapsuleId', 'id');
-  },
   iCapsule: function() {
     return this.belongsTo(DBCapsule, 'iCapsuleId', 'id');
   },
@@ -35,28 +33,32 @@ var DBFusion = Bookshelf.Model.extend({
 
 /* GET users listing. */
 router.get('/:capsuleId(\\d+)', function(req, res, next) {
-  new DBMapping()
-    .where('youCapsuleId', '=', req.params.capsuleId)
-    .fetchAll({withRelated: ['youCapsule', 'iCapsule', 'fusion']})
-    .then((collection) => {
-      var youCapsuleName = collection.toArray()[0]
-        .related('youCapsule').toJSON().fullName;
-      var mappings = collection.toArray().map(function(col) {
-        console.log(col.related('iCapsule').toJSON());
-        console.log(col.related('fusion').toJSON());
-        return col.attributes;
-      });
+  new DBCapsule()
+    .where('id', '=', req.params.capsuleId)
+    .fetch({require: true})
+    .then((col) => {
+      var youCapsule = col.toJSON();
+      new DBMapping()
+        .where('youCapsuleId', '=', youCapsule.id)
+        .fetchAll({withRelated: ['iCapsule', 'fusion']})
+        .then((collection) => {
+          var fusions = collection.toArray().map(function(col) {
+            var cps = col.related('iCapsule').toJSON();
+            var fsn = col.related('fusion').toJSON();
+            return new ViewFusion(cps.id, cps.fullName, fsn.fullName, fsn.phrase);
+          });
 
-      res.render('detail', { 
-        title: 'カプセル詳細',
-        youCapsuleName: youCapsuleName,
-        ultraList: [],
-        monsterList: []
-      });     
-
-  }).catch((err) =>{
-    next(err);
-  });
+          res.render('detail', { 
+            title: 'カプセル詳細',
+            youCapsuleName: youCapsule.fullName,
+            fusionList: fusions
+          });
+        }).catch((err) =>{
+          next(err);
+        });
+    }).catch((err) =>{
+      next(err);
+    });
 });
 
 module.exports = router;

@@ -1,4 +1,4 @@
-include ./mixin/capsuleList
+include ./mixin/fusionList
 
 extends layout
 block title
@@ -9,12 +9,13 @@ block content
 
   div.container-fluid
     div.row.flex-items-xs-center
-      div.col-md-6.col-xs-12
+      div.col-md-10.col-xs-12
         ul.nav.nav-pills
-          li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
-          li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
+          li.nav-item: a.nav-link.active(data-toggle="tab" href="#fusion" role="tab") 融合
         div.tab-content
-          div#ultra.tab-pane.active(role="tabpanel")
-            +list(ultraList)
-          div#monster.tab-pane(role="tabpanel")
-            +list(monsterList)
+          div#fusion.tab-pane.active(role="tabpanel")
+            - if (fusionList.length === 0) {
+              融合の組み合わせはありません。
+            - } else {
+              +list(fusionList)
+            - }
