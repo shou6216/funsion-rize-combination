@@ -1,10 +1,21 @@
+include ./mixin/capsuleList
+
 extends layout
 block title
   title= title
 block content
-  h1= title
-  p Welcome to #{title}
-    div.btn-group(role="group", aria-label="Basic example")
-      button.btn(type="button") Left
-      button.btn.btn-secondary(type="button") Middle
-      button.btn.btn-info(type="button") Right
+  div.jumbotron
+    h1 #{title}
+    p カプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
+
+  div.container-fluid
+    div.row.flex-items-xs-center
+      div.col-md-6.col-xs-12
+        ul.nav.nav-pills
+          li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
+          li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
+        div.tab-content
+          div#ultra.tab-pane.active(role="tabpanel")
+            +list(ultraList)
+          div#monster.tab-pane(role="tabpanel")
+            +list(monsterList)
