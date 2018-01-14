@@ -9,18 +9,43 @@ var knex = require('knex')({
 });
 var Bookshelf = require('bookshelf')(knex);
 var DBMapping = Bookshelf.Model.extend({
-  tableName: 'mapping'
+  tableName: 'mapping',
+  youCapsule: function() {
+    return this.belongsTo(DBCapsule, 'youCapsuleId', 'id');
+  },
+  iCapsule: function() {
+    return this.belongsTo(DBCapsule, 'iCapsuleId', 'id');
+  },
+  fusion: function() {
+    return this.belongsTo(DBFusion, 'fusionId', 'id');
+  }
+})
+var DBCapsule = Bookshelf.Model.extend({
+  tableName: 'capsule',
+  mapping: function() {
+    return this.hasOne(DBMapping);
+  }
+})
+var DBFusion = Bookshelf.Model.extend({
+  tableName: 'fusion',
+  mapping: function() {
+    return this.hasOne(DBMapping);
+  }
 })
 
 /* GET users listing. */
 router.get('/:capsuleId(\\d+)', function(req, res, next) {
-  new DBMapping().where('youCapsuleId', '=', req.params.capsuleId)
-    .fetchAll()
+  new DBMapping()
+    .where('youCapsuleId', '=', req.params.capsuleId)
+    .fetchAll({withRelated: ['youCapsule', 'iCapsule', 'fusion']})
     .then((collection) => {
       var mappings = collection.toArray().map(function(col) {
+        console.log(col.attributes);
+        console.log(col.related('youCapsule').toJSON());
+        console.log(col.related('iCapsule').toJSON());
+        console.log(col.related('fusion').toJSON());
         return col.attributes;
       });
-      console.log(mappings);
 
       res.render('detail', { 
         title: 'カプセル詳細',
