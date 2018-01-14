@@ -1,6 +1,5 @@
-var Capsule = function(id, type, fullName, nickName) {
+var Capsule = function(id, fullName, nickName) {
   this.id = id;
-  this.type = type;
   this.fullName = fullName;
   this.nickName = nickName;
 }

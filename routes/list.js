@@ -16,18 +16,17 @@ var DBCapsule = Bookshelf.Model.extend({
 /* GET home page. */
 router.get('/', function(req, res, next) {
   new DBCapsule().fetchAll().then((collection) => {
-    var capsules = collection.toArray().map(function(col) {
-      var obj = col.attributes;
-      return new ViewCapsule(obj.id, obj.type, obj.fullName, obj.nickName);
+    var ultraCapsules = [];
+    var monsterCapsules = [];
+    collection.toArray().forEach(function(col) {
+      var json = col.toJSON();
+      var viewObj = new ViewCapsule(json.id, json.fullName, json.nickName);
+      if (json.type === 'ultra') {
+        ultraCapsules.push(viewObj);
+      } else {
+        monsterCapsules.push(viewObj);
+      }
     });
-
-    var ultraCapsules = capsules.filter(function (capsule) {
-      return capsule.type === 'ultra';
-    })
-
-    var monsterCapsules = capsules.filter(function (capsule) {
-      return capsule.type === 'monster';
-    })
 
     res.render('list', { 
       title: 'カプセル一覧',
