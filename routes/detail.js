@@ -39,9 +39,9 @@ router.get('/:capsuleId(\\d+)', function(req, res, next) {
     .where('youCapsuleId', '=', req.params.capsuleId)
     .fetchAll({withRelated: ['youCapsule', 'iCapsule', 'fusion']})
     .then((collection) => {
+      var youCapsuleName = collection.toArray()[0]
+        .related('youCapsule').toJSON().fullName;
       var mappings = collection.toArray().map(function(col) {
-        console.log(col.attributes);
-        console.log(col.related('youCapsule').toJSON());
         console.log(col.related('iCapsule').toJSON());
         console.log(col.related('fusion').toJSON());
         return col.attributes;
@@ -49,6 +49,7 @@ router.get('/:capsuleId(\\d+)', function(req, res, next) {
 
       res.render('detail', { 
         title: 'カプセル詳細',
+        youCapsuleName: youCapsuleName,
         ultraList: [],
         monsterList: []
       });     
