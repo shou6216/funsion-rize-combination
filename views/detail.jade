@@ -5,17 +5,10 @@ block title
   title= title
 block content
   div.jumbotron
-    h1 #{youCapsuleName} の融合
+    h1 #{youCapsuleName}の組み合わせ
 
   div.container-fluid
     div.row.flex-items-xs-center
       div.col-md-10.col-xs-12
-        ul.nav.nav-pills
-          li.nav-item: a.nav-link.active(data-toggle="tab" href="#fusion" role="tab") 融合
-        div.tab-content
-          div#fusion.tab-pane.active(role="tabpanel")
-            - if (fusionList.length === 0) {
-              融合の組み合わせはありません。
-            - } else {
-              +list(fusionList)
-            - }
+        +list(fusionList)
+
