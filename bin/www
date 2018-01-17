@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('funsion-rize-combination:server');
+var debug = require('debug')('geed-rizer-pattern:server');
 var http = require('http');
 
 /**

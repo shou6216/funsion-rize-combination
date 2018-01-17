@@ -1,1 +1,1 @@
-# funsion-rize-combination
+# geed-rizer-pattern
