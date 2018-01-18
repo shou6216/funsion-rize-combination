@@ -1,7 +1,6 @@
-var Capsule = function(id, fullName, nickName) {
+module.exports = function(id, nickName, productName) {
   this.id = id;
-  this.fullName = fullName;
   this.nickName = nickName;
+  this.productName = productName;
 }
 
-module.exports = Capsule;

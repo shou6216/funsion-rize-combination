@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
     var monsterCapsules = [];
     collection.toArray().forEach(function(col) {
       var json = col.toJSON();
-      var viewObj = new ViewCapsule(json.id, json.fullName, json.nickName);
+      var viewObj = new ViewCapsule(json.id, json.nickName, json.productName);
       if (json.type === 'ultra') {
         ultraCapsules.push(viewObj);
       } else {

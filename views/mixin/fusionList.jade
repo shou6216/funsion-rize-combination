@@ -9,5 +9,5 @@ mixin list(fusionList)
       for fusion in fusionList
         tr
           td(scope="row"): a(href="/detail/#{fusion.iCapsuleId}")=fusion.iCapsuleName
-          td=fusion.nickName
+          td=fusion.fusionName
           td=fusion.fusionPhrase

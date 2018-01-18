@@ -8,4 +8,4 @@ mixin list(capsuleList)
       for capsule in capsuleList
         tr
           td(scope="row"): a(href="/detail/#{capsule.id}")=capsule.nickName
-          td=capsule.nickName
+          td=capsule.productName
