@@ -13,7 +13,6 @@ var DBCapsule = Bookshelf.Model.extend({
   tableName: 'capsule'
 })
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   new DBCapsule().fetchAll().then((collection) => {
     var ultraCapsules = [];
@@ -28,8 +27,7 @@ router.get('/', function(req, res, next) {
       }
     });
 
-    res.render('list', { 
-      title: 'カプセル一覧',
+    res.render('list', {
       ultraList: ultraCapsules,
       monsterList: monsterCapsules
     });      

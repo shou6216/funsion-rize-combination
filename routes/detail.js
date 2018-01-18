@@ -31,7 +31,6 @@ var DBFusion = Bookshelf.Model.extend({
   }
 })
 
-/* GET users listing. */
 router.get('/:capsuleId(\\d+)', function(req, res, next) {
   new DBCapsule()
     .where('id', '=', req.params.capsuleId)
@@ -49,7 +48,6 @@ router.get('/:capsuleId(\\d+)', function(req, res, next) {
           });
 
           res.render('detail', { 
-            title: 'カプセル詳細',
             youCapsuleName: youCapsule.fullName,
             fusionList: fusions
           });
