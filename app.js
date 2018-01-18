@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var i18n = require('i18n');
 
 var index = require('./routes/index');
 var list = require('./routes/list');
@@ -22,6 +23,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+i18n.configure({
+  locales: ['ja', 'en'],
+  defaultLocale: 'ja',
+  directory: __dirname + '/locales',
+  objectNotation: true
+});
+app.use(i18n.init);
 
 app.use('/', index);
 app.use('/list', list);

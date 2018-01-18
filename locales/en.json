@@ -1,0 +1,13 @@
+{
+	"app": {
+		"title": "Geed rizer mapping"
+	},
+	"list": {
+		"title": "list.title",
+		"description": "list.description",
+		"tab": {
+			"ultra": "list.tab.ultra",
+			"monster": "list.tab.monster"
+		}
+	}
+}

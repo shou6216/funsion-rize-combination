@@ -3,14 +3,14 @@ include ./mixin/capsuleList
 extends layout
 block content
   .jumbotron
-    h1 カプセル一覧
+    h1 #{__('list.title')}
     hr.my-2
     p.lead カプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
   .row.flex-items-xs-center
     .col-md-6.col-xs-12
       ul.nav.nav-pills
-        li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
-        li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
+        li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") #{__('list.tab.ultra')}
+        li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") #{__('list.tab.monster')}
       .tab-content
         #ultra.tab-pane.active(role="tabpanel")
           +list(ultraList)
