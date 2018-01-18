@@ -11,5 +11,11 @@ block content
   div.container-fluid
     div.row.flex-items-xs-center
       div.col-md-10.col-xs-12
-        +list(fusionList)
+        - if(fusionList.length == 0) {
+          組み合わせはまだありません。
+
+        - } else {
+          +list(fusionList)
+        - }
+
 
