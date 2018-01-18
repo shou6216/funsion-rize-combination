@@ -44,11 +44,11 @@ router.get('/:capsuleId(\\d+)', function(req, res, next) {
           var fusions = collection.toArray().map(function(col) {
             var cps = col.related('iCapsule').toJSON();
             var fsn = col.related('fusion').toJSON();
-            return new ViewFusion(cps.id, cps.fullName, fsn.fullName, fsn.phrase);
+            return new ViewFusion(cps.id, cps.nickName, fsn.fullName, fsn.phrase);
           });
 
           res.render('detail', { 
-            youCapsuleName: youCapsule.fullName,
+            youCapsuleName: youCapsule.nickName,
             fusionList: fusions
           });
         }).catch((err) =>{
