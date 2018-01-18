@@ -2,18 +2,17 @@ include ./mixin/capsuleList
 
 extends layout
 block content
-  div.jumbotron
+  .jumbotron
     h1 カプセル一覧
-    p カプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
-
-  div.container-fluid
-    div.row.flex-items-xs-center
-      div.col-md-6.col-xs-12
-        ul.nav.nav-pills
-          li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
-          li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
-        div.tab-content
-          div#ultra.tab-pane.active(role="tabpanel")
-            +list(ultraList)
-          div#monster.tab-pane(role="tabpanel")
-            +list(monsterList)
+    hr.my-2
+    p.lead カプセルを#[strong 超人]と#[strong 怪獣]に分けて表示します。
+  .row.flex-items-xs-center
+    .col-md-6.col-xs-12
+      ul.nav.nav-pills
+        li.nav-item: a.nav-link.active(data-toggle="tab" href="#ultra" role="tab") 超人
+        li.nav-item: a.nav-link(data-toggle="tab" href="#monster" role="tab") 怪獣
+      .tab-content
+        #ultra.tab-pane.active(role="tabpanel")
+          +list(ultraList)
+        #monster.tab-pane(role="tabpanel")
+          +list(monsterList)
