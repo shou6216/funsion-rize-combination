@@ -2,10 +2,10 @@ mixin list(capsuleList)
   table.table
     thead
       tr
-        th="フルネーム"
-        th="略名"
+        th="名前"
+        th="発売元"
     tbody
       for capsule in capsuleList
         tr
-          td(scope="row"): a(href="/detail/#{capsule.id}")=capsule.fullName
+          td(scope="row"): a(href="/detail/#{capsule.id}")=capsule.nickName
           td=capsule.nickName

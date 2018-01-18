@@ -2,12 +2,12 @@ mixin list(fusionList)
   table.table
     thead
       tr
-        th="融合の相手"
-        th="略名"
+        th="組み合わせの相手"
+        th="融合後の名前"
         th="決めゼリフ"
     tbody
       for fusion in fusionList
         tr
           td(scope="row"): a(href="/detail/#{fusion.iCapsuleId}")=fusion.iCapsuleName
-          td=fusion.fusionName
+          td=fusion.nickName
           td=fusion.fusionPhrase
