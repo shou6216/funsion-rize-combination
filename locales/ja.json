@@ -1,12 +1,23 @@
 {
-    "app": {
-        "title" : "ジードライザー組み合わせ"
-    },
-    "list": {
-        "title": "カプセル一覧",
-        "tab" : {
-            "ultra" : "超人",
-            "monster" : "怪獣"
-        }
-    }
+	"app": {
+		"title": "ジードライザー組み合わせ"
+	},
+	"list": {
+		"title": "カプセル一覧",
+		"description": "カプセルを<strong>超人</strong>と<strong>怪獣</strong>に分けて表示します。",
+		"tab": {
+			"ultra": "超人",
+			"monster": "怪獣"
+		},
+		"capsuleName": "名前",
+		"productName": "発売元"
+	},
+	"detail": {
+		"title": "%sの組み合わせ",
+		"back": "一覧に戻る",
+        "notFound": "まだ組み合わせはありません",
+        "partnerName": "相手",
+        "fusionName": "融合",
+        "fusionPhrase": "決めゼリフ"
+	}
 }

@@ -2,8 +2,8 @@ mixin list(capsuleList)
   table.table
     thead
       tr
-        th="名前"
-        th="発売元"
+        th=__('list.capsuleName')
+        th=__('list.productName')
     tbody
       for capsule in capsuleList
         tr

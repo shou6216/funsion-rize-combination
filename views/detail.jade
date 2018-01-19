@@ -3,14 +3,14 @@ include ./mixin/fusionList
 extends layout
 block content
   .jumbotron
-    h1 #{youCapsuleName}の組み合わせ
+    h1 #{__('detail.title', youCapsuleName)}
     hr.my-2
-    a.btn.btn-primary.btn-lg(href="/list" role="button") 一覧に戻る
+    a.btn.btn-primary.btn-lg(href="/list" role="button") #{__('detail.back')}
   .row.flex-items-xs-center
     .col-md-10.col-xs-12
       - if(fusionList.length == 0) {
-        組み合わせはまだありません。
-
+        p #{__('detail.notFound')}
+        
       - } else {
         +list(fusionList)
       - }

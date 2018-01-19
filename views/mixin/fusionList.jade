@@ -2,9 +2,9 @@ mixin list(fusionList)
   table.table
     thead
       tr
-        th="相手"
-        th="融合"
-        th="決めゼリフ"
+        th=__('detail.partnerName')
+        th=__('detail.fusionName')
+        th=__('detail.fusionPhrase')
     tbody
       for fusion in fusionList
         tr
