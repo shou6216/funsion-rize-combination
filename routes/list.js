@@ -1,20 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('knex')({
-  dialect: 'sqlite3',
-  connection: {
-    filename: 'fusion-rize.db'
-  },
-  useNullAsDefault: true
-});
-var Bookshelf = require('bookshelf')(knex);
+var sqliteClient = require('../models/sqliteClient');
 var ViewCapsule = require('../models/capsule');
-var DBCapsule = Bookshelf.Model.extend({
-  tableName: 'capsule'
-})
 
 router.get('/', function(req, res, next) {
-  new DBCapsule().fetchAll().then((collection) => {
+  new sqliteClient.Capsule().fetchAll().then((collection) => {
     var ultraCapsules = [];
     var monsterCapsules = [];
     collection.toArray().forEach(function(col) {
