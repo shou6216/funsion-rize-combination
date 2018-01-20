@@ -8,6 +8,15 @@
 		"tab": {
 			"ultra": "list.tab.ultra",
 			"monster": "list.tab.monster"
-		}
+		},
+		"capsuleName": "list.capsuleName",
+		"productName": "list.productName"
+	},
+	"detail": {
+		"title": "detail.title",
+		"back": "detail.back",
+		"partnerName": "detail.partnerName",
+		"fusionName": "detail.fusionName",
+		"fusionPhrase": "detail.fusionPhrase"
 	}
 }
